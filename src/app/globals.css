@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #1b2a4a;
+  --ink-soft: #4a5875;
+  --mist: #f2f5f3;
+  --paper: #ffffff;
+  --line: #d9e0dc;
+  --salama: #0e7c66;
+  --salama-tint: #e3f2ee;
+  --gold: #f2b632;
+  --gold-tint: #fdf3dc;
+  --amber: #b77900;
+  --amber-tint: #fbf1dc;
+  --crimson: #b83a25;
+  --crimson-tint: #f8e6e2;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-mist: var(--mist);
+  --color-paper: var(--paper);
+  --color-line: var(--line);
+  --color-salama: var(--salama);
+  --color-salama-tint: var(--salama-tint);
+  --color-gold: var(--gold);
+  --color-gold-tint: var(--gold-tint);
+  --color-amber: var(--amber);
+  --color-amber-tint: var(--amber-tint);
+  --color-crimson: var(--crimson);
+  --color-crimson-tint: var(--crimson-tint);
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-public-sans);
+}
+
+html {
+  background: var(--mist);
+}
+
+body {
+  background: var(--mist);
+  color: var(--ink);
+  font-family: var(--font-public-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.font-display {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-variation-settings: "wdth" 90;
+  letter-spacing: -0.01em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer components {
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--salama);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: #0a6653;
+}
+.btn-quiet {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.btn-quiet:hover:not(:disabled) {
+  border-color: var(--ink-soft);
+}
+.btn-danger {
+  background: var(--paper);
+  color: var(--crimson);
+  border-color: #e6bdb5;
+}
+.btn-danger:hover:not(:disabled) {
+  border-color: var(--crimson);
+}
+
+/* Form fields */
+.field-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.925rem;
+  margin-bottom: 0.3rem;
+}
+.field-hint {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+.input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.75rem;
+  border: 1.5px solid var(--line);
+  border-radius: 0.55rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+.input:focus {
+  border-color: var(--salama);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--salama-tint);
+}
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-score {
+    animation: reveal 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .slide-marker {
+    animation: marker 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes marker {
+  from {
+    left: 0%;
+  }
+}
